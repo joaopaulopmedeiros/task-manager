@@ -11,3 +11,7 @@ A simple and scalable task management solution
 - Dotnet;
 - Redis;
 - MySQL
+
+## FAQs
+
+[Check it out](./docs/faqs.md)
