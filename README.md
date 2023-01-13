@@ -13,7 +13,8 @@ A simple and scalable task management solution
 - .NET;
 - Xunit;
 - Moq;
-- FluentAssertions;
+- Fluent Assertions;
+- Serilog;
 - Swagger;
 
 ## FAQs
