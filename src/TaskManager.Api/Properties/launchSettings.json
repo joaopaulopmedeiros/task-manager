@@ -10,7 +10,7 @@
   },
   "profiles": {
     "Docker": {
-      "commandName": "Docker",
+      "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "publishAllPorts": true,
