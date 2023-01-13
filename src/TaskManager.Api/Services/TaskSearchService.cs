@@ -7,10 +7,10 @@ using TaskManager.Infrastructure;
 
 namespace TaskManager.Api.Services
 {
-    public class TaskSearchService
+    public class TaskSearchService : ITaskSearchService
     {
-        private readonly TaskDbContext _context;
         private readonly IDatabase _cache;
+        private readonly TaskDbContext _context;
 
         public TaskSearchService(IDatabase cache, TaskDbContext context)
         {

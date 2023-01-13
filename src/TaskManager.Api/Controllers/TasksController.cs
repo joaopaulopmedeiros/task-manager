@@ -18,7 +18,7 @@ namespace TaskManager.Api.Controllers
         public async Task<IActionResult> SearchByAsync
         (
             [FromQuery] TaskSearchRequest request,
-            [FromServices] TaskSearchService service
+            [FromServices] ITaskSearchService service
         )
         {
             var response = await service.SearchByAsync(request);

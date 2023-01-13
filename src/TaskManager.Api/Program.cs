@@ -34,7 +34,7 @@ builder.Services.AddDbContext<TaskDbContext>(dbContextOptions =>
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors();
 });
-builder.Services.AddTransient<TaskSearchService>();
+builder.Services.AddTransient<ITaskSearchService,TaskSearchService>();
 
 var app = builder.Build();
 
