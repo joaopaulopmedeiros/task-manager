@@ -14,6 +14,7 @@ A simple and scalable task management solution
 - Xunit;
 - Moq;
 - Fluent Assertions;
+- K6;
 - Serilog;
 - Swagger;
 
