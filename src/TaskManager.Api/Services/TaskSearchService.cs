@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Serilog;
 using StackExchange.Redis;
 using System.Text.Json;
 using TaskManager.Api.Requests;
@@ -22,6 +23,8 @@ namespace TaskManager.Api.Services
         {
             var key = request.ToString();
 
+            Log.Information($"Searching tasks. Input: {key}");
+
             var cachedValue = await _cache.StringGetAsync(key);
 
             var content = cachedValue.ToString();
@@ -37,15 +40,18 @@ namespace TaskManager.Api.Services
                    .Take(request.Size)
                    .ToListAsync();
                 
-                content = JsonSerializer.Serialize(tasks);
-
-                await _cache.StringSetAsync(key, content, TimeSpan.FromMinutes(5));
-
-                response.AddRange(tasks);
+                if (tasks != null && tasks.Any())
+                {
+                    Log.Information("Serializing tasks from mysql and updating redis for 5 minutes");
+                    content = JsonSerializer.Serialize(tasks);
+                    await _cache.StringSetAsync(key, content, TimeSpan.FromMinutes(5));
+                    response.AddRange(tasks);
+                }
 
                 return response;
             } else
             {
+                Log.Information($"Deserializing tasks from redis. Content: {content}");
                 response = JsonSerializer.Deserialize<TaskSearchResponse>(content);
                 return response;
             }

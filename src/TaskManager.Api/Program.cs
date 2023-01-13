@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using StackExchange.Redis;
 using TaskManager.Api.Services;
 using TaskManager.Infrastructure;
@@ -35,6 +36,12 @@ builder.Services.AddDbContext<TaskDbContext>(dbContextOptions =>
         .EnableDetailedErrors();
 });
 builder.Services.AddTransient<ITaskSearchService,TaskSearchService>();
+
+//serilog
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .CreateLogger();
 
 var app = builder.Build();
 
