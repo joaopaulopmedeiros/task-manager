@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+  task_manager_api:
+    image: ${DOCKER_REGISTRY-}task-manager-api
+    depends_on:
+      - "redis_server"
+      - "mysql_server"
+    build:
+      context: .
+      dockerfile: src/TaskManager.Api/Dockerfile
+    environment:
+        - DBHOST=mysql_server
+        - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "3333:443"
+    links:
+      - "redis_server"
+      - "mysql_server"
+  redis_server:
+        image: redis
+        container_name: Redis
+        ports:
+          - "6379:6379"
+  mysql_server:
+    image: mysql:8.0.29
+    restart: always
+    environment:
+      MYSQL_DATABASE: task_manager
+      MYSQL_USER: task_manager_u
+      MYSQL_PASSWORD: task_manager_p
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:

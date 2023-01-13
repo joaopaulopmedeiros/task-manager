@@ -17,6 +17,7 @@ namespace TaskManager.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Models.Task>()
+                .ToTable("tasks")
                 .Property(t => t.CreatedAt).HasColumnName("created_at");
 
             base.OnModelCreating(modelBuilder);

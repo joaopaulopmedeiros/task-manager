@@ -8,8 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
+
+//mysql db
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
+var connectionString = builder.Configuration.GetConnectionString("mysql");
+
 builder.Services.AddDbContext<TaskDbContext>(
     dbContextOptions => dbContextOptions
         .UseMySql(connectionString, serverVersion)

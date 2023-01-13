@@ -8,7 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/TaskManager.Api/TaskManager.Api.csproj", "src/TaskManager.Api/"]
-COPY ["src/TaskManager.Infrastructure/TaskManager.Infrastructure.csproj", "src/TaskManager.Infrastructure/"]
 RUN dotnet restore "src/TaskManager.Api/TaskManager.Api.csproj"
 COPY . .
 WORKDIR "/src/src/TaskManager.Api"
