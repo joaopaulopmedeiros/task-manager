@@ -9,8 +9,11 @@ namespace TaskManager.Api.Controllers
     public class TasksController : ControllerBase
     {
         /// <summary>
-        /// Consulta por tarefas
+        /// Simple search for tasks
         /// </summary>
+        /// <response code="200">Returns 200 and list of tasks</response>
+        /// <response code="204">Returns 204 and an empty list of tasks, which means that there are not results for search</response>
+        /// <returns>List of tasks</returns>
         /// <param name="request"></param>
         /// <param name="service"></param>
         /// <returns></returns>
