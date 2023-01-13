@@ -39,7 +39,7 @@ namespace TaskManager.Api.Services
                 
                 content = JsonSerializer.Serialize(tasks);
 
-                await _cache.StringSetAsync(key, content);
+                await _cache.StringSetAsync(key, content, TimeSpan.FromMinutes(5));
 
                 response.AddRange(tasks);
 
