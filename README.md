@@ -8,9 +8,13 @@ A simple and scalable task management solution
 
 - Docker;
 - Docker Compose;
-- Dotnet;
 - Redis;
-- MySQL
+- MySQL;
+- .NET;
+- Xunit;
+- Moq;
+- FluentAssertions;
+- Swagger;
 
 ## FAQs
 
