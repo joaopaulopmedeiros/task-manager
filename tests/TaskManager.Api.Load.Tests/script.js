@@ -5,7 +5,7 @@ export const options = {
     insecureSkipTLSVerify: true,
     noConnectionReuse: false,
     stages: [
-        { duration: '1m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
+        { duration: '1m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 1 minute.
     ],
     thresholds: {
         'http_req_duration': ['p(99)<1500'], //99% of requests finished in less than 1.5 seconds
