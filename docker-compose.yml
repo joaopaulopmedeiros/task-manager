@@ -3,6 +3,7 @@ version: '3.4'
 services:
   task_manager_api:
     image: ${DOCKER_REGISTRY-}task-manager-api
+    container_name: task_manager_api
     depends_on:
       - "redis_server"
       - "mysql_server"
@@ -19,11 +20,12 @@ services:
       - "mysql_server"
   redis_server:
         image: redis
-        container_name: Redis
+        container_name: task_manager_redis
         ports:
           - "6379:6379"
   mysql_server:
     image: mysql:8.0.29
+    container_name: task_manager_mysql
     restart: always
     environment:
       MYSQL_DATABASE: task_manager

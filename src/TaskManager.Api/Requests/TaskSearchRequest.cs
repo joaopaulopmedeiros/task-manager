@@ -9,5 +9,7 @@
     public class TaskSearchRequest : PaginatedRequest
     {
         public string? Title { get; set; }
+
+        public new string ToString() => $"size={Size}&page={Page}&title={Title}";
     }
 }
